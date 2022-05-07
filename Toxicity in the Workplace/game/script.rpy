@@ -28,6 +28,16 @@ label start:
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
+    # --------------------------------
+
+    # Create stats for characters
+    # To use PEOPLE dictionary: 
+    #   In string: "bla bla [people[key(name/role)]]"
+    #   In statement: $ [people['key(name/role)']
+    $ people = {'junior_programmer': 3, 'lead_designer': 3}
+    $ emotion = {1: 'very angry', 2: 'angry', 3: 'normal', 4: 'happy', 5:'very happy'}
+    
+
 label people_options:
     menu:
         "Talk to Junior Programmer":
@@ -39,10 +49,32 @@ label people_options:
 
 label junior_programmer:
     "Talking to Junior Programmer"
+    $ value = int(people['junior_programmer'])
+    $ emotion_string = emotion[value]
+    "His value is [value] aka [emotion_string]"
+    menu:
+        "Make him angry":
+            $ people['junior_programmer'] -= 1
+            "He is angry, lose a value by 1"
+        "Make him happy":
+            $ people['junior_programmer'] += 1
+            "He is happy, gain a value by 1"
+        "Do Nothing":
+            pass
     jump people_options
 
 label lead_designer:
     "Talking to Lead Designer"
+    "Her value is [people[lead_designer]]"
+    menu:
+        "Make her angry":
+            $ people['lead_designer'] -= 1
+            "She is angry, lose a value by 1"
+        "Make her happy":
+            $ people['lead_designer'] += 1
+            "She is happy, gain a value by 1"
+        "Do Nothing":
+            pass
     jump people_options
 
 
