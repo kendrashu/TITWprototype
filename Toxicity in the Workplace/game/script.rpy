@@ -28,6 +28,25 @@ label start:
 
     e "Once you add a story, pictures, and music, you can release it to the world!"
 
-    # This ends the game.
+label people_options:
+    menu:
+        "Talk to Junior Programmer":
+            jump junior_programmer
+        "Talk to Lead Designer":
+            jump lead_designer
+        "End the game":
+            jump end
 
+label junior_programmer:
+    "Talking to Junior Programmer"
+    jump people_options
+
+label lead_designer:
+    "Talking to Lead Designer"
+    jump people_options
+
+
+label end:
+    # This ends the game.
+    "Ending the game"
     return
