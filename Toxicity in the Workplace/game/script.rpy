@@ -34,9 +34,15 @@ image bg office = "./images/office2.jpg"
 image bg office space= "./images/officespace.jpg"
 image bg workspace = "./images/workspace.jpg"
 
+# Characters' Stats
+# To use PEOPLE dictionary: 
+#   In string: "bla bla [people[key(name/role)]]"
+#   In statement: $ [people['key(name/role)']
+default people = {'mc': 3, 'ch': 3, 'pm': 3}
+default emotion = {1: 'very angry', 2: 'angry', 3: 'normal', 4: 'happy', 5:'very happy'}
+
 
 # The game starts here.
-
 label start:
     scene bg black
     python:
@@ -46,55 +52,47 @@ label start:
             mcname = "Rob Boss"
     mc "My name is [mc]."
     scene bg room
-
-
-    # --------------------------------
-
-    # Create stats for characters
-    # To use PEOPLE dictionary: 
-    #   In string: "bla bla [people[key(name/role)]]"
-    #   In statement: $ [people['key(name/role)']
-    $ people = {'junior_programmer': 3, 'lead_designer': 3}
-    $ emotion = {1: 'very angry', 2: 'angry', 3: 'normal', 4: 'happy', 5:'very happy'}
-    
+       
 
 label people_options:
     menu:
-        "Talk to Junior Programmer":
+        "Talk to [ch]":
             jump junior_programmer
-        "Talk to Lead Designer":
-            jump lead_designer
+        "Talk to [pm]":
+            jump project_manager
         "Chapter 1":
             jump chapter_one 
         "End the game":
             jump end
 
 label junior_programmer:
-    "Talking to Junior Programmer"
-    $ value = int(people['junior_programmer'])
+    "Talking to [ch]"
+    $ value = int(people['ch'])
     $ emotion_string = emotion[value]
-    "His value is [value] aka [emotion_string]"
+    "[ch]'s value is [value] aka [emotion_string]"
     menu:
-        "Make him angry":
-            $ people['junior_programmer'] -= 1
-            "He is angry, lose a value by 1"
-        "Make him happy":
-            $ people['junior_programmer'] += 1
-            "He is happy, gain a value by 1"
+        "Make [ch] angry":
+            $ people['ch'] -= 1
+            "[ch] is angry, lose a value by 1"
+        "Make [ch] happy":
+            $ people['ch'] += 1
+            "[ch] is happy, gain a value by 1"
         "Do Nothing":
             pass
     jump people_options
 
-label lead_designer:
-    "Talking to Lead Designer"
-    "Her value is [people[lead_designer]]"
+label project_manager:
+    "Talking to [pm]"
+    $ value = int(people['pm'])
+    $ emotion_string = emotion[value]
+    "[pm]'s value is [people[pm]]"
     menu:
-        "Make her angry":
-            $ people['lead_designer'] -= 1
-            "She is angry, lose a value by 1"
-        "Make her happy":
-            $ people['lead_designer'] += 1
-            "She is happy, gain a value by 1"
+        "Make [pm] angry":
+            $ people['pm'] -= 1
+            "[pm] is angry, lose a value by 1"
+        "Make [pm] happy":
+            $ people['pm'] += 1
+            "[pm] is happy, gain a value by 1"
         "Do Nothing":
             pass
     jump people_options
@@ -278,7 +276,7 @@ label feel_terrible:
     
         
 label you_suck_response:
-     menu: 
+    menu: 
         "Sorry about the unpleasant things. I'll do it in my way.":
             "I decided to fight back."
             #Propreties:M3 +1=M4 B5 E 1
