@@ -1,27 +1,63 @@
 ﻿# The script of the game goes in this file.
 
-# Declare characters used by this game. The color argument colorizes the
-# name of the character.
+##CHARACTER DEFINITIONS##
 
-#define e = Character("Eileen", what_prefix='"', what_suffix='"')
-define mc = Character("[mcname]", what_prefix='"', what_suffix='"') #main Character 
-define ch = Character("Charlie", what_prefix='"', what_suffix='"')
-define pm = Character("Project Manager", what_prefix='"', what_suffix='"')
+#Main Character 
+define mc = Character("[mcname]", what_prefix='"', what_suffix='"') 
 
-#PLACEHOLDERS FOR NOW#
-
-#Image Character Sprites 
-#replace him with an animal
 #Senior Designer
-image charlie neutral = "./images/Characters/win d.png"
-image charlie happy = "./images/Characters/win h.png"
-image charlie shock = "./images/Characters/win s.png"
-image charlie angry = "./images/Characters/win a.png"
+define ch = Character("Charlie", what_prefix='"', what_suffix='"') 
+
+#Project Manager 
+define pm = Character("Project Manager", what_prefix='"', what_suffix='"')
+define joe = Character("Joe", what_prefix='"', what_suffix='"') #Project Manager but he has a name now 
+
+#Publisher
+define pub = Character("Publisher", what_prefix='"', what_suffix='"') 
+define per = Character("Percy", what_prefix='"', what_suffix='"') 
+
+#Mid-level Animator 
+define ari = Character("Ariel", what_prefix='"', what_suffix='"') 
+
+#Extras 
+define ex1 = Character("Extra #1", what_prefix='"', what_suffix='"') 
+define ex2 = Character("Extra #2", what_prefix='"', what_suffix='"')
+define ex3 = Character("Extra #3", what_prefix='"', what_suffix='"') 
+
+
+##Image Character Sprites ##
+#Senior Designer
+image charlie neutral = "./images/Characters/neutralCharlie.png"
+image charlie happy = "./images/Characters/satisfiedCharlie.png"
+image charlie angry = "./images/Characters/angryCharlie1.png"
 
 #Project Manager
-image pm neutral = "./Characters/bp rock d.png"
-image pm angry = "./Characters/bp rock a.png"
-image pm happy = "./Characters/bp rock h.png"
+image pm neutral = "./Characters/PM.png"
+image pm happy = "./Characters/PM.png"
+image pm angry = "./Characters/angryPM.png"
+
+
+#Other Senior Designer 
+image janice neutral = "./Characters/JanicetheotherSeniorDesigner.png" 
+
+#PLACEHOLDERS FOR NOW#
+#Publisher 
+image pub neutral = "./images/Characters/bp rock d.png"
+image pub happy = "./images/Characters/bp rock h.png"
+image pub angry = "./images/Characters/bp rock a.png"
+
+#Mid-level Animator 
+image anim neutral = "./images/Characters/carmen d.png"
+image anim happy = "./images/Characters/carmen h.png"
+image anim angry = "./images/Characters/carmen a.png"
+
+##custom x coord for sprites##
+transform middle:
+    xalign 0.5
+#transform left:
+  #  xalign 0.2
+#transform right:
+   # xalign 0.8
 
 #Image Backgrounds 
 #https://neeka-of-obp.itch.io/office-background-pack-lite 
@@ -51,7 +87,7 @@ label start:
         mcname = renpy.input("My name is?", length=32)
         mcname = mcname.strip()
         if not mcname: 
-            mcname = "Rob Boss"
+            mcname = "Emm Cee"
     mc "My name is [mc]."
     scene bg room
        
@@ -64,6 +100,8 @@ label people_options:
             jump project_manager
         "Chapter 1":
             jump chapter_one 
+        "Chapter 2":
+            jump chapter_two
         "End the game":
             jump end
 
@@ -119,5 +157,5 @@ label end:
     "<Gaslighting numerical cases>"
     "<Gaslighting testimonials>"
     "The End."
-
+    #jump people_options
     return

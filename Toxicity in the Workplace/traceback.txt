@@ -1,28 +1,43 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 143, in script
-    if notReport:
-  File "game/script.rpy", line 143, in <module>
-    if notReport:
-NameError: name 'notReport' is not defined
+  File "game/chapter_one.rpy", line 9, in script
+    "Dear [mc],"
+KeyError: u'mcname'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 143, in script
-    if notReport:
-  File "renpy/ast.py", line 1893, in execute
-    if renpy.python.py_eval(condition):
-  File "renpy/python.py", line 2266, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "renpy/python.py", line 2259, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 143, in <module>
-    if notReport:
-NameError: name 'notReport' is not defined
+  File "game/chapter_one.rpy", line 9, in script
+    "Dear [mc],"
+  File "renpy/ast.py", line 716, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "renpy/exports.py", line 1417, in say
+    who(what, *args, **kwargs)
+  File "renpy/character.py", line 1210, in __call__
+    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
+  File "renpy/character.py", line 1129, in prefix_suffix
+    return (sub(prefix) + sub(body) + sub(suffix))
+  File "renpy/character.py", line 1109, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+  File "renpy/substitutions.py", line 270, in substitute
+    s = formatter.vformat(s, (), kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 596, in _vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 613, in format_field
+  File "renpy/character.py", line 1079, in __format__
+    return format(str(self), spec)
+  File "renpy/character.py", line 1059, in __unicode__
+    return renpy.substitutions.substitute(who)[0]
+  File "renpy/substitutions.py", line 270, in substitute
+    s = formatter.vformat(s, (), kwargs)
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
+  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
+KeyError: u'mcname'
 
 Windows-10-10.0.19041
 Ren'Py 7.4.8.1895
 Toxicity in the Workplace 1.0
-Fri May  6 22:47:54 2022
+Mon May  9 15:11:38 2022

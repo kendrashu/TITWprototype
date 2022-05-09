@@ -3,6 +3,7 @@
 
 
 label chapter_one:
+
     scene bg letter 
 
     "Dear [mc],"
@@ -14,7 +15,9 @@ label chapter_one:
     "Choose your Senior Designer."
     menu: 
         "A serious looking one":
+            show janice neutral
             "However, the other new employee was assigned to this Designer."
+            hide janice 
             jump senior_designer
         "A taciturn but smiling one":
             jump senior_designer 
@@ -61,7 +64,7 @@ label meetingroom1:
     ch "This is really unprofessional." 
     "Charlie said and pushed the computer back to me without any explanation."
 
-    mc "I feel vaguely weird,"
+    "I feel weird."
     hide charlie angry
 
     #Propreties: M5-1=M4 B5 E5 -1=E4
@@ -193,7 +196,7 @@ label gaslit:
                     "I change my clothes every day."
                     "However, I still make a new mistake."
                     scene bg office space with fade 
-                    show charlie shock 
+                    show charlie neutral
                     ch "You look unhappy, you should smile."
                     scene bg lounge with fade 
                     show charlie neutral 
@@ -251,13 +254,17 @@ label evidence:
     menu:
         "Project Manager Office":
             scene bg office with fade 
-            show pm neutral 
+            #show pm neutral 
+            show pm angry
             "I sent all the evidence I collected to the project manager."
             "After a moment's silence."
-            show pm happy 
+            show pm neutral
             pm "Nice work you did."
             hide pm 
             #Properties Checking: if M<3 to i102 
+
+        #STATS STUFF
+        #replace this with an if statement? 
             menu:
                 "Good Stats":
                     jump good_end 
@@ -268,11 +275,12 @@ label evidence2:
     menu:
         "Project Manager Office":
             scene bg office with fade 
-            show pm neutral 
+            #show pm neutral 
+            show pm angry
             "I sent all the evidence I collected to the project manager."
             "After a moment's silence."
             pm "Nice work you did."
-            show pm shock 
+            show pm neutral
             pm "I apologize for being so presumptuous earlier."
             scene bg black with fade
             "Charlie was fired."
@@ -290,10 +298,14 @@ label dismiss:
     menu:
         "Timeskip to Project Manager Office":
             scene bg office with fade 
-            show pm neutral 
+            "A couple days later..."
+            #show pm neutral 
+            show pm angry
             pm "Sorry, we won't be hiring you anymore."
             hide pm 
             #Properties Checking: if E<3 to J103
+        #STATS STUFF
+        #replace this with an if statement? 
             menu:
                 "Good Stats":
                     scene bg black with fade 
@@ -314,6 +326,7 @@ label good_end:
 
 
 label worst_end:
+    scene bg black with fade 
     "The world hates me. "
     "I'm a terrible person."
     "Ending 1. Lose it all." #changed the name 
