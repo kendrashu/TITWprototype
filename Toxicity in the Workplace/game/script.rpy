@@ -106,43 +106,37 @@ label people_options:
             jump end
 
 label junior_programmer:
-    #show charlie neutral
+    show charlie neutral
     "Talking to [ch]"
     $ value = int(people['ch'])
     $ emotion_string = emotion[value]
     "[ch]'s value is [value] aka [emotion_string]"
     menu:
         "Make [ch] angry":
-            #show charlie angry 
             $ people['ch'] -= 1
             "[ch] is angry, lose a value by 1"
         "Make [ch] happy":
-            #show charlie happy 
             $ people['ch'] += 1
             "[ch] is happy, gain a value by 1"
         "Do Nothing":
             pass
-    #hide charlie 
+     
     jump people_options
 
-label project_manager:
-    #show pm neutral 
+label project_manager: 
     "Talking to [pm]"
     $ value = int(people['pm'])
     $ emotion_string = emotion[value]
     "[pm]'s value is [people[pm]]"
     menu:
-        "Make [pm] angry":
-            #show pm angry 
+        "Make [pm] angry": 
             $ people['pm'] -= 1
             "[pm] is angry, lose a value by 1"
         "Make [pm] happy":
-            #show pm happy 
             $ people['pm'] += 1
             "[pm] is happy, gain a value by 1"
         "Do Nothing":
             pass
-    #hide pm 
     jump people_options
 
 

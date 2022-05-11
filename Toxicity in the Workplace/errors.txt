@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/chapter_one.rpy", line 301: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation.
-    "A couple days later..."
+File "game/chapter_two.rpy", line 115: expected menuitem
+    menu: 
     ^
 
 Ren'Py Version: Ren'Py 7.4.8.1895
-Mon May  9 15:26:22 2022
+Wed May 11 11:32:03 2022

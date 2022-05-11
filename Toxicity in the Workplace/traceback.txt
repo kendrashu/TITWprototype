@@ -1,43 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/chapter_one.rpy", line 9, in script
-    "Dear [mc],"
-KeyError: u'mcname'
+  File "game/chapter_two.rpy", line 114, in script
+    if $ accept_decline_request:
+SyntaxError: invalid syntax (chapter_two.rpy, line 114)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/chapter_one.rpy", line 9, in script
-    "Dear [mc],"
-  File "renpy/ast.py", line 716, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "renpy/exports.py", line 1417, in say
-    who(what, *args, **kwargs)
-  File "renpy/character.py", line 1210, in __call__
-    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
-  File "renpy/character.py", line 1129, in prefix_suffix
-    return (sub(prefix) + sub(body) + sub(suffix))
-  File "renpy/character.py", line 1109, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "renpy/substitutions.py", line 270, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 596, in _vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 613, in format_field
-  File "renpy/character.py", line 1079, in __format__
-    return format(str(self), spec)
-  File "renpy/character.py", line 1059, in __unicode__
-    return renpy.substitutions.substitute(who)[0]
-  File "renpy/substitutions.py", line 270, in substitute
-    s = formatter.vformat(s, (), kwargs)
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 563, in vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 585, in _vformat
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 646, in get_field
-  File "/home/tom/ab/renpy-build/tmp/install.linux-x86_64/lib/python2.7/string.py", line 605, in get_value
-KeyError: u'mcname'
+  File "game/chapter_two.rpy", line 114, in script
+    if $ accept_decline_request:
+  File "renpy/ast.py", line 1893, in execute
+    if renpy.python.py_eval(condition):
+  File "renpy/python.py", line 2264, in py_eval
+    code = py_compile(code, 'eval')
+  File "renpy/python.py", line 835, in py_compile
+    raise e
+SyntaxError: invalid syntax (chapter_two.rpy, line 114)
 
 Windows-10-10.0.19041
 Ren'Py 7.4.8.1895
 Toxicity in the Workplace 1.0
-Mon May  9 15:11:38 2022
+Wed May 11 11:27:29 2022

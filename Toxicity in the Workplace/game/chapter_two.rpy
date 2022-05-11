@@ -1,3 +1,6 @@
+$ accept_decline_request = False 
+$ middle_ground = False 
+
 
 label chapter_two:
     scene bg office space with fade 
@@ -67,6 +70,7 @@ label accept_pub:
     "Percy beams," 
     per "Wonderful, I will eagerly anticipate your update next week!"
     hide pub
+    $ accept_decline_request = True 
     jump schedule
 
 label middle_pub:
@@ -83,6 +87,7 @@ label middle_pub:
     "Percy sighs."
     per "Fine, I'll check back with you next week then. The moveset better be satisfyingly strong by then." 
     hide pub 
+    $ middle_ground = True
     jump schedule 
 
 label decline_pub:
@@ -95,6 +100,8 @@ label decline_pub:
     per "Our board has decided that these features will be vital for sales, so we'll need these features in when the character releases." 
     per "I expect to hear good news about your progress on the matter next week." 
     hide pub
+    $ accept_decline_request = True 
+
     jump schedule
 
 label schedule:
@@ -106,15 +113,13 @@ label schedule:
                 "Call an emergency meeting with involved parties":
                     #STATS STUFF - change this menu into if statement 
                     menu: 
-                        "You had Accepted/Declined the request":
-                    #A. Call an emergency meeting with involved parties AND either Accepted the request (A) OR Declined the request (C)
-                            jump emergencyAC 
-                    
-                    #A. Call an emergency meeting with involved parties AND Proposed a middle-ground solution (B)
-                        "You picked the middle ground option":
-                            jump emergencyB
-
-                    
+                            "You had Accepted/Declined the request":
+                        #A. Call an emergency meeting with involved parties AND either Accepted the request (A) OR Declined the request (C)
+                                jump emergencyAC 
+                        
+                        #A. Call an emergency meeting with involved parties AND Proposed a middle-ground solution (B)
+                            "You picked the middle ground option":
+                                jump emergencyB 
 
                 "Reschedule tasks on your own":
                     jump reschedule_tasks 
