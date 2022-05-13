@@ -23,6 +23,8 @@ define ari = Character("Ariel", what_prefix='"', what_suffix='"')
 define ex1 = Character("Extra #1", what_prefix='"', what_suffix='"') 
 define ex2 = Character("Extra #2", what_prefix='"', what_suffix='"')
 define ex3 = Character("Extra #3", what_prefix='"', what_suffix='"') 
+define who = Character("???", what_prefix='"', what_suffix='"') 
+
 
 
 ##Image Character Sprites ##
@@ -42,14 +44,19 @@ image janice neutral = "./Characters/JanicetheotherSeniorDesigner.png"
 
 #PLACEHOLDERS FOR NOW#
 #Publisher 
-image pub neutral = "./images/Characters/bp rock d.png"
-image pub happy = "./images/Characters/bp rock h.png"
-image pub angry = "./images/Characters/bp rock a.png"
+image pub neutral = "./images/Characters/neutralPercy.png"
+image pub happy = "./images/Characters/happyPercy.png"
+image pub angry = "./images/Characters/angryPercy.png"
 
 #Mid-level Animator 
-image anim neutral = "./images/Characters/carmen d.png"
-image anim happy = "./images/Characters/carmen h.png"
-image anim angry = "./images/Characters/carmen a.png"
+image anim neutral = "./images/Characters/neutralAriel.png"
+#image anim happy = "./images/Characters/carmen h.png"
+#image anim angry = "./images/Characters/carmen a.png"
+
+#Player 
+image player happy = "./images/Characters/happyplayer.png"
+image player neutral = "./images/Characters/neutralplayer.png"
+image player sad = "./images/Characters/sadplayer.png"
 
 ##custom x coord for sprites##
 transform middle:
@@ -62,7 +69,7 @@ transform middle:
 #Image Backgrounds 
 #https://neeka-of-obp.itch.io/office-background-pack-lite 
 #the only free office VN bgs I could find
-image bg letter = "./images/letter.jpg" #replace this with actual letter 
+image bg letter = "./images/letter1.jpeg" #replace this with actual letter 
 image bg black = "./images/black.png"
 image bg lounge = "./images/lounge.jpg"
 image bg meeting room = "./images/meetingroom2.jpg"
@@ -71,6 +78,7 @@ image bg office space= "./images/officespace.jpg"
 image bg workspace = "./images/workspace.jpg" 
 #https://thumbs.dreamstime.com/b/people-talking-to-each-other-silhouettes-set-black-three-groups-different-standing-51963980.jpg
 image bg gaslight = "./images/gaslight placeholder.jpg"
+image bg gaslight dog = "./images/gaslight placeholder1.jpg"
 
 # Characters' Stats
 # To use PEOPLE dictionary: 
@@ -83,13 +91,22 @@ default emotion = {1: 'very angry', 2: 'angry', 3: 'normal', 4: 'happy', 5:'very
 # The game starts here.
 label start:
     scene bg black
+    show player neutral 
     python:
         mcname = renpy.input("My name is?", length=32)
         mcname = mcname.strip()
         if not mcname: 
             mcname = "Emm Cee"
     mc "My name is [mc]."
-    scene bg room
+    scene bg lounge
+    hide player
+
+label startGame:
+    menu: 
+        "Chapter 1":
+            jump chapter_one 
+        "Chapter 2":
+            jump chapter_two
        
 
 label people_options:
@@ -98,15 +115,11 @@ label people_options:
             jump junior_programmer
         "Talk to [pm]":
             jump project_manager
-        "Chapter 1":
-            jump chapter_one 
-        "Chapter 2":
-            jump chapter_two
         "End the game":
             jump end
 
 label junior_programmer:
-    show charlie neutral
+    #show charlie neutral
     "Talking to [ch]"
     $ value = int(people['ch'])
     $ emotion_string = emotion[value]
