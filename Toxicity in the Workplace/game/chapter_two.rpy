@@ -9,7 +9,7 @@ label chapter_two:
     "You are responsible for delegating tasks and delivering communication between your team and the publisher."
     hide pm
     menu:
-        "Go to Project Manager Office":
+        "Project Manager Office":
             scene bg office with fade 
             show pm neutral 
             "It's Friday morning, which means that I'm due for a meeting with the publisher soon."
@@ -22,7 +22,7 @@ label chapter_two:
                     scene bg meeting room with fade 
                     "Not long after I've taken a seat, the publisher's spokesperson promptly strides through the door and takes the seat across from me."
                     show pub happy
-                    pub "Good morning, Joe." 
+                    per "Good morning, Joe." 
                     "He smiles, extending a hand in greeting."
                     joe "Good morning, Percy. "
                     #"I reply,"
@@ -83,7 +83,7 @@ label middle_pub:
     show pub angry 
     "Percy's brow slightly furrows."
     per "Definitely not ideal." 
-    joe "I agree, it's not ideal. But having too many changes will jepordize getting the character released on time." 
+    joe "I agree, it's not ideal. But having too many changes will jeopardize getting the character released on time." 
     "Percy sighs."
     per "Fine, I'll check back with you next week then. The moveset better be satisfyingly strong by then." 
     hide pub 
@@ -106,7 +106,7 @@ label decline_pub:
 
 label schedule:
     menu: 
-        "Go to Project Manager Office":
+        "Head back to Project Manager Office":
             scene bg office with fade
             "Well, I better get cracking on this schedule..."
             menu: 
@@ -150,7 +150,7 @@ label emergencyAC:
     menu: 
         "Go to Meeting Room":
             scene bg meeting room with fade
-            joe "Welcome, everyone, to our sprint review."
+            joe "Welcome, everyone, to our sprint review where we'll be going over completed work and additional changes."
             joe "I have some updates to share with everyone based on the meeting I had with our publisher this morning."
             "I give everyone a concise rundown of the publisher's requests and the modified sprint schedule."
             ex1 "More features?"
@@ -158,7 +158,7 @@ label emergencyAC:
             ex3 "I'll have to let my wife know to save a portion of dinner for me for the next two weeks."
             "Several unsatisfied murmers float through the air."
             "But who wouldn't be unhappy with crunch time?"
-            "Such is the life of a game developer. Weekends are for normies."
+            "Such is the life of a game developer. Weekends are a luxury."
             jump ch2_end 
 
 label emergencyB:
