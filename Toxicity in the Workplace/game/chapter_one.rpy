@@ -172,12 +172,12 @@ label feel_terrible:
     "I feel terrible." 
     menu: 
         "I decide to talk to Charlie.":
-            menu:
-                "Go to Charlie": 
-                    show charlie angry 
-                    ch "You are too young. You don't know what goes on in the background. All things are about business."
-                    ch "You screwed everything up, [mcname]."
-                    hide charlie angry 
+            #menu:
+             #   "Go to Charlie": 
+            show charlie angry 
+            ch "You are too young. You don't know what goes on in the background. All things are about business."
+            ch "You screwed everything up, [mcname]."
+            hide charlie angry 
 
             menu:
                 "But it is not my mistake.":
@@ -234,7 +234,7 @@ label feel_terrible:
 label gaslit: 
     show charlie neutral
     "I can still remember Charlie patting me on the shoulder and saying," 
-    scene bg workspace with fade 
+    #scene bg workspace with fade 
     show charlie happy 
     ch "Well done, you're going to do great things."
     hide charlie happy
@@ -294,7 +294,7 @@ label you_suck_response:
             jump resign 
 
 label get_proof: #Properties Checking: if M<3, execute A, prompt Warning
-    scene bg workspace
+    #scene bg workspace
     "I have to prove that I told the truth."
     #"<Warning> Different options require different psychological pressures."
     menu:
