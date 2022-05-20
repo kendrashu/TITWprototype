@@ -105,10 +105,13 @@ label meetingroom1:
             #Propreties: M5-1=M4 B5 E5 -1=E4
             menu:
                 "and I report this incident to the project manager.":
-                
+                    $ playerStats['Courage'] += 1
+                    "Courage increase by 1"
                     jump everything_changed 
 
                 "But I act like nothing happened and submitted the minutes.":
+                    $ playerStats['Mental Health'] -= 2
+                    "Mental Health decrease by 2"
                     #scene bg black with fade 
                     menu:
                         "Timeskip to Team Office":
@@ -155,9 +158,14 @@ label everything_changed:
     menu: 
         "I think I was treated badly.":
             #A: Propreties:M3 B5 E3 -1=E2 
+            $ playerStats['Awareness'] += 1
+            "Awareness increase by 1"
             jump feel_terrible 
 
         "Maybe I'm just being overly sensitive":
+            $ playerStats['Courage'] -= 1
+            $ playerStats['Kindness'] += 1
+            "Courage decrease by 1, Kindness increase by 1"
             "I need to go to the private meeting room to speak with QA this afternoon."
             menu: 
                 "Pass by the Lounge":
@@ -172,8 +180,11 @@ label feel_terrible:
     "I feel terrible." 
     menu: 
         "I decide to talk to Charlie.":
+            $ playerStats['Courage'] += 2
+            $ playerStats['Mental Health'] += 1
+            "Courage increase by 2, Mental Health increase by 1"
             #menu:
-             #   "Go to Charlie": 
+            #   "Go to Charlie": 
             show charlie angry 
             ch "You are too young. You don't know what goes on in the background. All things are about business."
             ch "You screwed everything up, [mcname]."
@@ -181,7 +192,8 @@ label feel_terrible:
 
             menu:
                 "But it is not my mistake.":
-
+                    $ playerStats['Courage'] += 1
+                    "Courage increase by 1"
                     show charlie neutral
                     "Charlie looks me straight into my eyes."
                     show charlie angry 
@@ -197,6 +209,9 @@ label feel_terrible:
                     jump you_suck_response 
 
                 "...could you please give me one more chance?":
+                    $ playerStats['Courage'] -= 1
+                    $ playerStats['Mental Health'] -= 1
+                    "Courage decrease by 1, Mental Health decrease by 1"
                     show charlie happy
                     "Charlie smiled."
                     #Propreties: M3 -1=2 B5 E2+1=E3
@@ -207,6 +222,9 @@ label feel_terrible:
                    
 
         "I pretended that nothing happened.": #"I pretended not to hear and hurried out of there.": 
+            $ playerStats['Courage'] -= 2
+            $ playerStats['Awareness'] += 1
+            "Courage decrease by 2, Awareness increase by 1"
             menu: 
                 "Team Office":
                     scene bg workspace with fade 
@@ -240,6 +258,8 @@ label gaslit:
     hide charlie happy
     menu: 
         "I must have done something wrong.":
+            $ playerStats['Mental Health'] -= 2
+            "Mental Health decrease by 2"
             menu: 
                 "Office":
                     scene bg office with fade 
@@ -276,6 +296,8 @@ label gaslit:
                     jump worst_end
 
         "That's not right. That's not how it's suppose to be.":
+            $ playerStats['Awareness'] += 1
+            "Awareness increase by 1"
             "I must get out of this disgusting situation."
             jump get_proof
     
@@ -283,12 +305,17 @@ label gaslit:
 label you_suck_response:
     menu: 
         "Sorry about the unpleasant things. I'll do it in my way.":
+            $ playerStats['Courage'] += 1
+            $ playerStats['Kindness'] += 2
+            "Courage increase by 1, Kindness increase by 2"
             "I decide to fight back."
             #Propreties:M3 +1=M4 B5 E 1
             jump get_proof
 
 
         "Great, I'm done.": 
+            $ playerStats['Courage'] += 3
+            "Courage increase by 3"
             "I quit the job immediately."
             #Propreties: M3 +1=M4 B5 E1 +4=E5
             jump resign 
@@ -299,14 +326,19 @@ label get_proof: #Properties Checking: if M<3, execute A, prompt Warning
     #"<Warning> Different options require different psychological pressures."
     menu:
         "Chat history": 
+            $ playerStats['Awareness'] -= 1
+            $ playerStats['Mental Health'] -= 1
             #mental health -1
             jump evidence 
 
         "Mail Records":
+            $ playerStats['Awareness'] -= 1
+            $ playerStats['Mental Health'] -= 1
             #mental health -1
             jump evidence 
 
         "Public CCTV":
+            
             #mental health -3
             jump evidence2  
 
