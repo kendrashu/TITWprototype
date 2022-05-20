@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/chapter_one.rpy", line 236: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation.
-    show charlie neutral
-    ^
+File "game/chapter_one.rpy", line 310: indentation mismatch.
 
 Ren'Py Version: Ren'Py 7.4.8.1895
-Thu May 12 19:36:47 2022
+Thu May 19 21:08:13 2022
