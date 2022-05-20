@@ -1,6 +1,3 @@
-$ accept_decline_request = False 
-$ middle_ground = False 
-
 label chapter_two:
     scene bg office space with fade 
     show pm neutral 
@@ -13,11 +10,12 @@ label chapter_two:
             show pm neutral 
             "It's Friday morning, which means that I'm due for a meeting with the publisher soon."
             "I gather up my meeting notes, take one last sip of coffee, and check my watch."
-            joe "It's about time," 
+            joe "I still have some time..." 
+            "{i}(Exploration break){/i}"
             "I murmer to myself, straightening my suit."
             joe "Gotta head to the meeting room before Percy gets here." 
             menu: 
-                "Go to Meeting Room":
+                "Go to Team Meeting Room":
                     scene bg meeting room with fade 
                     "Not long after I've taken a seat, the publisher's spokesperson promptly strides through the door and takes the seat across from me."
                     show pub happy
@@ -38,6 +36,18 @@ label chapter_two:
                             $ joeStats['Awareness'] += 2
                             "Awareness increase by 2"
                             jump handshake 
+
+                        "Giving a goofy grin and eagerly shaking his hand.":
+                            $ joeStats['Kindness'] += 1
+                            "Kindess increase by 1"
+                            jump handshake
+
+                        "Making solid eye contact with him as I shake his hands once.":
+                            $ joeStats['Awareness'] += 1
+                            $ joeStats['Charisma'] += 1
+                            "Charisma increase by 2, Awareness increase by 1"
+                            jump handshake
+
 label handshake:
     show pub happy 
     per "Well then, let's get down to business, shall we?" 
@@ -85,7 +95,7 @@ label accept_pub:
     "Percy beams," 
     per "Wonderful, I will eagerly anticipate your update next week!"
     hide pub
-    $ accept_decline_request = True 
+    
     jump schedule
 
 label middle_pub:
@@ -102,7 +112,7 @@ label middle_pub:
     "Percy sighs."
     per "Fine, I'll check back with you next week then. The moveset better be satisfyingly strong by then." 
     hide pub 
-    $ middle_ground = True
+    
     jump schedule 
 
 label decline_pub:
@@ -115,11 +125,12 @@ label decline_pub:
     per "Our board has decided that these features will be vital for sales, so we'll need these features in when the character releases." 
     per "I expect to hear good news about your progress on the matter next week." 
     hide pub
-    $ accept_decline_request = True 
 
     jump schedule
 
 label schedule:
+    "{i}(Exploration Break){/i}"
+
     menu: 
         "Head back to Project Manager Office":
             scene bg office with fade
@@ -130,21 +141,30 @@ label schedule:
                     $ joeStats['Courage'] += 1
                     $ joeStats['Charisma'] += 2
                     "Awareness increase by 3, Courage increase by 1, Charisma incease by 2"
-                    #STATS STUFF - change this menu into if statement 
-                    menu: 
-                            "You had Accepted/Declined the request":
-                        #A. Call an emergency meeting with involved parties AND either Accepted the request (A) OR Declined the request (C)
-                                jump emergencyAC 
-                        
-                        #A. Call an emergency meeting with involved parties AND Proposed a middle-ground solution (B)
-                            "You picked the middle ground option":
-                                jump emergencyB 
+                    jump chose_what 
+
+                "Call an emergency meeting with the whole team":
+                    $ joeStats['Awareness'] += 3
+                    $ joeStats['Courage'] += 1
+                    "Awareness increase by 1, Courage increase by 1"
+                    jump chose_what 
 
                 "Reschedule tasks on your own":
                     $ joeStats['Awareness'] -= 3
                     $ joeStats['Charisma'] -= 2
-                    "Awareness - 3, Charisma - 2"
+                    "Awareness decrease by 3, Charisma decrease by 2"
                     jump reschedule_tasks 
+
+label chose_what:
+    #STATS STUFF - change this menu into if statement 
+    menu: 
+        "You had Accepted/Declined the request":
+        #A. Call an emergency meeting with involved parties AND either Accepted the request (A) OR Declined the request (C)
+            jump emergencyAC 
+        
+        #A. Call an emergency meeting with involved parties AND Proposed a middle-ground solution (B)
+        "You picked the middle ground option":
+            jump emergencyB 
 
 
 label emergencyAC:
@@ -170,7 +190,7 @@ label emergencyAC:
     "It's too bad we lost 15 minutes of lunch break, "
     "but I have a much clearer idea of how to distribute these tasks and assign realistic deadlines for these next two weeks."
     menu: 
-        "Go to Meeting Room":
+        "Go to Team Meeting Room":
             scene bg meeting room with fade
             joe "Welcome, everyone, to our sprint review where we'll be going over completed work and additional changes."
             joe "I have some updates to share with everyone based on the meeting I had with our publisher this morning."
