@@ -1,7 +1,6 @@
 $ accept_decline_request = False 
 $ middle_ground = False 
 
-
 label chapter_two:
     scene bg office space with fade 
     show pm neutral 
@@ -30,9 +29,14 @@ label chapter_two:
                     menu: 
 
                         "Smiling in kind and grasping his hand in a handshake.":
+                            $ joeStats['Charisma'] += 2
+                            $ joeStats['Kindness'] += 2
+                            "Charisma increase by 2, Kindness increase by 2"
                             jump handshake 
 
-                        "Curtly nodding and grasping his hand in a firm handshake.": 
+                        "Curtly nodding and grasping his hand in a firm handshake.":
+                            $ joeStats['Awareness'] += 2
+                            "Awareness increase by 2"
                             jump handshake 
 label handshake:
     show pub happy 
@@ -52,12 +56,23 @@ label handshake:
     hide pub
     menu: 
         "Accept the request.":
+            $ joeStats['Awareness'] -= 2
+            $ joeStats['Charisma'] += 2
+            " Awareness decrease by 2, charisma increase by 2"
             jump accept_pub
 
         "Propose a middle-ground solution.":
+            $ joeStats['Awareness'] += 1
+            $ joeStats['Charisma'] += 1
+            $ joeStats['Courage'] -= 1
+            "Courage increase by 1, Courage decrease by 1, Charisma increase by 1"
             jump middle_pub
 
-        "Decline the request.": 
+        "Decline the request.":
+            $ joeStats['Courage'] += 2
+            $ joeStats['Awareness'] += 2
+            $ joeStats['Charisma'] -= 2
+            "Courage increase by 2, Awareness increase by 2, Charisma decrease by 2"
             jump decline_pub
 
 label accept_pub:
@@ -111,6 +126,10 @@ label schedule:
             "Well, I better get cracking on this schedule..."
             menu: 
                 "Call an emergency meeting with involved parties":
+                    $ joeStats['Awareness'] += 3
+                    $ joeStats['Courage'] += 1
+                    $ joeStats['Charisma'] += 2
+                    "Awareness increase by 3, Courage increase by 1, Charisma incease by 2"
                     #STATS STUFF - change this menu into if statement 
                     menu: 
                             "You had Accepted/Declined the request":
@@ -122,6 +141,9 @@ label schedule:
                                 jump emergencyB 
 
                 "Reschedule tasks on your own":
+                    $ joeStats['Awareness'] -= 3
+                    $ joeStats['Charisma'] -= 2
+                    "Awareness - 3, Charisma - 2"
                     jump reschedule_tasks 
 
 

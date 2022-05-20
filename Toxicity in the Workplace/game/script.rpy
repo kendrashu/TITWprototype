@@ -86,7 +86,9 @@ image bg gaslight dog = "./images/gaslight placeholder1.jpg"
 #   In statement: $ [people['key(name/role)']
 default people = {'mc': 3, 'ch': 3, 'pm': 3}
 default emotion = {1: 'very angry', 2: 'angry', 3: 'normal', 4: 'happy', 5:'very happy'}
-default playerStats = {'Mental Health' : 1,  'Awareness' : 1, 'Courage' : 1, 'Kindness' : 1}
+default playerStats = {'Mental Health': 1,  'Awareness': 1, 'Courage': 1, 'Kindness': 1}
+default joeStats = {'Charisma': 1, 'Awareness': 1, 'Courage': 1, 'Kindness': 1}
+default subordinateStats = {'Mental Health': 1, 'Work': 1, 'LoadProductiveness': 1} 
 
 
 # The game starts here.

@@ -1,7 +1,6 @@
 # Implementing the dialouge from here 
 #https://docs.google.com/spreadsheets/d/1U0G65mqXHQhQ_7g8A7ZLfTBbkok0qyP7RsILxaPznkk/edit#gid=0
 
-
 label chapter_one:
 
     scene bg letter 
