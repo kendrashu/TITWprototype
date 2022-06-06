@@ -1,4 +1,10 @@
+
+
+
 label chapter_two:
+    $ agree_decline_request = 0
+    $ middle_ground1 = 0
+
     scene bg office space with fade 
     show pm neutral 
     "You are Joe, the project manager."
@@ -66,12 +72,14 @@ label handshake:
     hide pub
     menu: 
         "Accept the request.":
+            $ agree_decline_request += 1
             $ joeStats['Awareness'] -= 2
             $ joeStats['Charisma'] += 2
             " Awareness decrease by 2, charisma increase by 2"
             jump accept_pub
 
         "Propose a middle-ground solution.":
+            $ middle_ground1 += 1
             $ joeStats['Awareness'] += 1
             $ joeStats['Charisma'] += 1
             $ joeStats['Courage'] -= 1
@@ -79,6 +87,7 @@ label handshake:
             jump middle_pub
 
         "Decline the request.":
+            $ agree_decline_request += 1
             $ joeStats['Courage'] += 2
             $ joeStats['Awareness'] += 2
             $ joeStats['Charisma'] -= 2
@@ -156,15 +165,13 @@ label schedule:
                     jump reschedule_tasks 
 
 label chose_what:
-    #STATS STUFF - change this menu into if statement 
-    menu: 
-        "You had Accepted/Declined the request":
-        #A. Call an emergency meeting with involved parties AND either Accepted the request (A) OR Declined the request (C)
-            jump emergencyAC 
-        
-        #A. Call an emergency meeting with involved parties AND Proposed a middle-ground solution (B)
-        "You picked the middle ground option":
-            jump emergencyB 
+    if agree_decline_request >= 1:
+        jump emergencyAC 
+    elif middle_ground >= 1:
+        jump emergencyB
+    else:
+        jump emergencyAC 
+
 
 
 label emergencyAC:

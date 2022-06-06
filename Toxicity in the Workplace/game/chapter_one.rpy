@@ -1,6 +1,9 @@
 # Implementing the dialouge from here 
 #https://docs.google.com/spreadsheets/d/1U0G65mqXHQhQ_7g8A7ZLfTBbkok0qyP7RsILxaPznkk/edit#gid=0
 
+
+
+
 label chapter_one:
 
     scene bg letter 
@@ -42,7 +45,7 @@ label chapter_one:
 label senior_designer:
     #scene bg office space with fade 
     show charlie happy
-    "The smiling one, Charlie becames my higher-up."
+    "The smiling one, Charlie becomes my higher-up."
     hide charlie 
     #INSERT STATS 
     #Propreties: M3+1=M4 B3+1=B4 E5
@@ -466,12 +469,19 @@ label evidence:
 
         #STATS STUFF
         #replace this with an if statement? 
-            menu:
-                "Good Stats":
-                    jump good_end 
+            #menu:
+                #"Good Stats":
+                 #   jump good_end 
 
-                "Bad Stats":
-                    jump dismiss 
+                #"Bad Stats":
+                   # jump dismiss 
+
+            if playerStats['Mental Health'] <= 0:
+                jump dismiss
+
+            else:
+                jump good_end 
+
 label evidence2:
     menu:
         "Go to Project Manager Office":

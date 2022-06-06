@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/chapter_two.rpy", line 154: choice menuitem expects a non-empty block.
-    "Call an emergency meeting with the whole team":
-                                                    ^
+File "game/chapter_two.rpy", line 168: expected statement.
+    STATS STUFF - change this menu into if statement 
+                              ^
+
+File "game/chapter_two.rpy", line 170: choice menuitem expects a non-empty block.
+    "You had Accepted/Declined the request":
+                                            ^
 
 Ren'Py Version: Ren'Py 7.4.8.1895
-Thu May 19 21:49:44 2022
+Mon Jun  6 15:48:00 2022
